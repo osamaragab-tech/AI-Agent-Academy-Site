@@ -318,7 +318,7 @@ a {
     margin-top: 15px;
 }
 
-.btn-view, .btn-checkout {
+.btn-view {
     padding: 10px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -345,9 +345,27 @@ a {
     background-color: var(--accent-blue-light);
     color: var(--text-light);
     border: 1px solid var(--accent-blue-light);
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    
+    /* 🔴 الإضافة 1: جعل الزر بالكامل أبيض وأسود */
+    filter: grayscale(100%); 
+    
+    /* 🔴 الإضافة 2: تطبيق الانتقال على الفلتر أيضاً */
+    transition: background-color 0.3s, color 0.3s, filter 0.3s ease-in-out; 
+    
+    flex-grow: 1;
 }
 
 .btn-checkout:hover {
+    /* 🟢 التغيير: إلغاء تصفية الأبيض والأسود */
+    filter: grayscale(0%); 
+    
+    /* الحفاظ على تأثير التحويم الحالي */
     background-color: #1a337a;
     color: var(--text-light);
 }
