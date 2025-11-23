@@ -60,7 +60,7 @@ a {
    position: relative; 
     color: var(--text-light); 
     padding: 0px;
-    min-height: 80vh;
+    height: 70vh;
     overflow: hidden; 
 }
 
