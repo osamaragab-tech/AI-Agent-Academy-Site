@@ -1,0 +1,849 @@
+/*
+ * =========================================================
+ * 0. GLOBAL STYLES & CSS VARIABLES
+ * =========================================================
+ */
+
+* {
+    /* Set default box model to border-box for easier layout management */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables for design consistency */
+:root {
+    --primary-blue-dark: #1E3A8A;   /* Dark blue for background/footer */
+    --accent-blue-light: #3b61b3;   /* Bright blue for main buttons/CTA */
+    --text-dark: #333;
+    --text-light: #fff;
+    --bg-light: #f4f4f4; 
+    --font-primary: 'Inter', sans-serif; 
+}
+
+/* Base Body Styles */
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    margin: 0;
+}
+
+a {
+    /* Base link styling */
+    text-decoration: none;
+}
+
+.container {
+    /* Center content and limit maximum width */
+    width: 90%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.py-5 {
+    /* Utility class for vertical padding */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/*
+ * =========================================================
+ * 1. HEADER AND HERO SECTION
+ * =========================================================
+ */
+
+/* Wrapper for the combined background image */
+#hero-wrapper {
+   position: relative; 
+    color: var(--text-light); 
+    padding: 30px;
+    min-height: 100vh;
+    overflow: hidden; 
+}
+
+#hero-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* هذا الكود يضمن تغطية الفيديو للحاوية بالكامل */
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2; /* يضع الفيديو في الخلف تماماً */
+}
+
+#hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* هنا نستخدم درجة اللون الداكن التي كنت تستخدمها في background-image */
+    background-color: rgba(0, 0, 0, 0.5); /* قيمة التعتيم 50% */
+    z-index: -1; /* يوضع فوق الفيديو وتحت المحتوى */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; 
+}
+
+/* Navbar Styling */
+#navbar {
+    background-color: transparent; 
+    position: relative;
+    height: 60px;
+}
+
+/* Navigation Content Positioning (Mobile) */
+#navbar .nav-content {
+    position: relative; 
+    width: calc(100% - 26px); 
+    height: 31px;
+    top: 15px; 
+    left: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+/* Logo Text Styling */
+#navbar .logo-text {
+    font-family: var(--font-primary); 
+    font-weight: 700; 
+    font-size: 16px; 
+    line-height: 100%;
+    color: var(--text-light);
+}
+
+/* Hide the Contact Us button on Mobile */
+#navbar .btn-contact {
+    display: none;
+}
+
+
+/* Hero Content Styles */
+#hero {
+    padding: 100px 0; 
+    text-align: center; 
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column;
+}
+
+/* Hero Subtitle (AI & AUTOMATION) */
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #a8a8a8; 
+}
+
+/* Hero Headline (AI AGENT COURSES FOR 2025) */
+.hero-headline {
+    font-size: 2.5rem; 
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Hero Description */
+.hero-description {
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #e0e0e0; 
+}
+
+
+/*
+ * =========================================================
+ * 2. MOBILE MENU STYLING
+ * =========================================================
+ */
+
+.menu-icon {
+    /* Visible only on mobile */
+    display: block; 
+    cursor: pointer;
+    width: 24px;
+    height: 20px; 
+    position: relative;
+    z-index: 101; 
+}
+
+/* Individual lines of the hamburger icon */
+.menu-icon .line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light); 
+    margin: 4px 0;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu Layout */
+.nav-links {
+    /* Default: hidden on mobile */
+    display: none; 
+    transition: transform 0.4s ease-in-out;
+    transform: translateX(100%);
+    height: calc(100vh - 60px); 
+    overflow-y: auto; 
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-blue-dark); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px 0;
+    z-index: 50; 
+}
+/* Styling to show the menu (added via JS) */
+.nav-links.nav-active {
+    display: block;
+    transform: translateX(0);
+}
+
+/* Mobile list item styling */
+.nav-links ul {
+    list-style: none;
+    display: block; 
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links ul li {
+    padding: 15px 25px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    text-align: left;
+}
+
+.nav-links ul li:last-child {
+    border-bottom: none;
+}
+
+.nav-links a {
+    color: var(--text-light) !important;
+    font-size: 1.1rem; 
+    font-weight: 500;
+    display: block;
+}
+
+
+/*
+ * =========================================================
+ * 3. COURSES GRID SECTION
+ * =========================================================
+ */
+
+/* Main Section Title */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+/* Course Grid Container */
+#courses .courses-grid {
+    display: grid;
+    gap: 20px;
+    /* Mobile default: 1 column */
+    grid-template-columns: 1fr; 
+}
+
+/* Course Card Styling */
+.course-card {
+    background-color: var(--text-light); 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden; 
+    text-align: center;
+}
+
+.course-image {
+    width: 100%;
+    height: 257px;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.course-info {
+    padding: 15px;
+}
+
+.course-title {
+    font-size: 1.2rem; 
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.course-price {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color: var(--text-dark); 
+    margin-bottom: 10px;
+}
+
+.course-duration {
+    display: inline-block;
+    background-image: linear-gradient(to right, #3a5eb1, #1a2a4f);
+    color: var(--text-light);
+    font-size: 1rem;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.course-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-view, .btn-checkout {
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    flex-grow: 1; 
+    text-align: center;
+}
+
+/* View Cart Button Styling */
+.btn-view {
+    background-color: transparent;
+    color: var(--accent-blue-light);
+    border: 1px solid var(--accent-blue-light);
+}
+.btn-view:hover {
+    background-color: #1a337a;
+    color: var(--text-light);
+}
+
+/* Checkout Button Styling */
+.btn-checkout {
+    background-color: var(--accent-blue-light);
+    color: var(--text-light);
+    border: 1px solid var(--accent-blue-light);
+}
+
+.btn-checkout:hover {
+    background-color: #1a337a;
+    color: var(--text-light);
+}
+
+.course-actions .fa-shopping-cart {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+
+/*
+ * =========================================================
+ * 4. CERTIFICATE SECTION
+ * =========================================================
+ */
+
+#certificate {
+    background-color: var(--bg-light); 
+    text-align: center;
+}
+
+.certificate-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.certificate-main-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+    border-radius: 8px;
+}
+
+
+/*
+ * =========================================================
+ * 5. VIDEOS GRID SECTION
+ * =========================================================
+ */
+
+#videos {
+    background-color: var(--bg-light); 
+}
+
+.videos-grid {
+    display: grid;
+    /* Mobile default: 2 columns */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+}
+
+.video-card-item {
+    background-color: var(--text-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    cursor: pointer;
+}
+
+.video-thumbnail-wrapper {
+    position: relative;
+    padding-bottom: 75%; 
+    height: 0;
+    overflow: hidden;
+}
+
+.video-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Play Icon */
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: var(--primary-blue-dark);
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border-radius: 50%;
+    pointer-events: none; 
+}
+
+.video-description {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+/*
+ * =========================================================
+ * 6. CONTACT SECTION (Get In Touch)
+ * =========================================================
+ */
+
+#contact {
+    background-color: var(--text-light); 
+}
+
+/* Contact Grid Wrapper */
+.contact-wrapper {
+    display: grid;
+    /* Mobile default: 1 column */
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px 0;
+}
+
+/* Left-aligned Title (will be centered on mobile via MQ) */
+.section-title-left {
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.contact-location {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.open-hours {
+    text-align: left;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 0.90rem;
+}
+
+.open-label {
+    display: block;
+    margin-bottom: 5px;
+    align-items: center;
+    font-weight: 600; 
+    color: #333;
+}
+
+.open-time {
+    font-weight: 400; 
+    color: #555;
+    margin: 0; 
+}
+
+.open-label i {
+    color: #4169E1; 
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+/* Contact Form */
+.contact-form-grid {
+    background-color: var(--text-light);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Fields */
+.contact-form-grid input,
+.contact-form-grid textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* Large radius */
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 10px; 
+}
+
+/* Inline fields (Email and Phone) */
+.form-inline {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* Send Button */
+.btn-primary-send {
+    background-color: #4169E1; 
+    color: var(--text-light);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px; 
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%; 
+}
+
+
+/*
+ * =========================================================
+ * 7. FOOTER SECTION
+ * =========================================================
+ */
+
+footer {
+    background-color: #4169E1; 
+    color: var(--text-light);
+    padding: 50px 0 20px 0; 
+}
+
+/* Footer Grid */
+.footer-grid {
+    grid-template-columns: repeat(2, 1fr); /* Mobile default */
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.footer-col ul {
+    list-style: none; /* Remove list dots */
+    padding: 0;
+}
+
+.footer-col h3 {
+    font-size: 1.3rem; 
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 600; 
+}
+
+.footer-info p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    max-width: 250px; 
+}
+
+.footer-col ul li a {
+    color: var(--text-light);
+    opacity: 0.9;
+    font-size: 0.9rem; 
+    line-height: 1.7; 
+    display: block; 
+    transition: opacity 0.3s;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.4rem; 
+    margin-right: 15px;
+    opacity: 1;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+
+/* أساسيات النافذة المنبثقة */
+.modal {
+  display: none; /* إخفاء النافذة مبدئيًا */
+  position: fixed; 
+  z-index: 1000; /* يجب أن يكون أعلى من كل شيء */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9); /* خلفية سوداء شفافة */
+}
+
+.modal-content {
+  margin: 10% auto; /* توسيط عمودي وأفقي */
+  padding: 20px;
+  width: 80%; /* يمكنك تعديله */
+  max-width: 900px;
+  background-color: #000; /* خلفية محتوى المودال سوداء */
+  position: relative;
+}
+
+.close-button {
+  color: #fff;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #aaa;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
+ * =========================================================
+ * 8. MEDIA QUERIES (RESPONSIVENESS)
+ * =========================================================
+ */
+
+/* Tablet and larger adjustments (>= 768px) */
+@media (min-width: 768px) {
+    /* Navbar Visibility */
+    .menu-icon {
+        display: none; 
+    }
+    .nav-content {
+        position: relative !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        top: auto !important;
+        left: auto !important;
+        height: auto !important;
+    }
+    .nav-links {
+        display: block !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+    .nav-links ul {
+        list-style: none;
+        display: flex; 
+        gap: 30px; 
+        padding: 0; 
+        margin: 0;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .nav-links ul li {
+        padding: 0;
+        border-bottom: none;
+    }
+    #navbar .btn-contact {
+        display: inline-block !important; 
+        margin-left: 20px;
+        background-color: var(--primary-blue-dark); 
+        color: var(--text-light);
+        padding: 8px 18px; 
+        border-radius: 5px; 
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .nav-menu-desktop {
+            display: flex;
+            /* يجعل العناصر داخلها (القائمة والزر) تترتب أفقياً */
+            align-items: center;
+            gap: 30px;
+            /* مسافة بين القائمة والزر */
+        }  
+        .nav-links a {
+        color: var(--text-light) !important;
+    }
+    
+    /* Courses Grid */
+    #courses .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Videos Grid */
+    .videos-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px;
+    }
+
+    
+    
+}
+
+/* Large Tablet and Desktop adjustments (>= 992px) */
+@media (min-width: 992px) {
+    
+    /* Hero */
+    .hero-headline {
+        font-size: 4rem; 
+    }
+    .hero-description {
+        font-size: 1.2rem;
+    }
+    
+    /* Contact Section (Two Columns, Centered) */
+    .contact-wrapper {
+        grid-template-columns: 40% 60%; 
+        align-items: flex-start;
+        padding: 50px 0;
+    }
+    .contact-info {
+        /* Centering left column content for desktop */
+        text-align: center;
+    }
+    .section-title-left {
+        text-align: center;
+        font-size: 2rem; 
+    }
+    .open-hours {
+        /* Stack and center open hours */
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    /* Footer Grid (Four Columns) */
+    .footer-grid {
+        display: grid;
+        /* 1.5fr for logo/info, 1fr for the rest */
+        grid-template-columns: 1.5fr 1fr 1fr 1fr; 
+        gap: 40px; 
+    }
+}
+
+/* Extra Large Desktop adjustments (>= 1024px) */
+@media (min-width: 1024px) {
+    #courses .courses-grid {
+        /* 3 columns on standard desktop */
+        grid-template-columns: repeat(3, 1fr);
+    }
+    /* Videos Grid remains 3 columns here */
+}
+
+/* Mobile Fixes (<= 991px) for Contact Section Centering */
+@media (max-width: 991px) {
+    .contact-info {
+        text-align: center !important; 
+    }
+    .section-title-left {
+        text-align: center !important; 
+        font-size: 2rem; 
+    }
+    .open-hours {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+    }
+    .open-label, .open-time {
+        margin: 0;
+        padding: 0;
+    }
+    .open-label {
+        margin-bottom: 2px;
+    }
+}
+
+
+/* Mobile Fixes (<= 767px) for Footer Stacking and Centering */
+@media (max-width: 991px) {
+    .footer-grid {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+    .footer-col {
+        text-align: center;
+        padding-bottom: 20px; 
+    }
+    .footer-info p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        max-width: 100%; 
+    }
+    .footer-col ul {
+        display: inline-block;
+    }
+    .social-links {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    /* Additional Mobile Adjustments */
+    .hero-headline {
+        font-size: 2.2rem;
+    }
+    .videos-grid {
+        grid-template-columns: 1fr; /* Single column on small devices */
+    }
+}
