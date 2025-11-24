@@ -93,6 +93,20 @@ a {
     font-size: 18px;
 }
 
+#hero-phone-image {
+    position: absolute;
+    /* ضعها في أسفل الحاوية */
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%); /* للتوسيط الأفقي */
+    
+    /* تحديد عرض مناسب لها */
+    width: 60%; /* مثال، اضبط هذه القيمة ليناسب التصميم */
+    max-width: 500px; /* تحديد عرض أقصى */
+    
+    z-index: -6; /* يجب أن تكون تحت المحتوى النصي وفوق الخلفية الأساسية */
+}
+
 .hero-content {
     position: relative;
     z-index: 1; 
