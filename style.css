@@ -81,8 +81,8 @@ a {
 
 .audio-control-btn {
     position: absolute;
-    top: 20px; /* أو حسب المكان الذي يناسبك */
-    right: 20px; /* أو حسب المكان الذي يناسبك */
+    top: 40px; /* أو حسب المكان الذي يناسبك */
+    right: 20%; /* أو حسب المكان الذي يناسبك */
     z-index: 10; /* يجب أن يكون أعلى من الفيديو */
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -876,11 +876,3 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-    .audio-control-btn {
-        top: 15px; /* تقليل المسافة من الأعلى */
-        right: 15px; /* تقليل المسافة من الجانب */
-        font-size: 16px; /* تصغير حجم الأيقونة قليلاً */
-        padding: 8px; /* تصغير حجم الزر قليلاً */
-    }
-}
