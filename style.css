@@ -875,3 +875,12 @@ footer {
         grid-template-columns: 1fr; /* Single column on small devices */
     }
 }
+
+@media (max-width: 600px) {
+    .audio-control-btn {
+        top: 15px; /* تقليل المسافة من الأعلى */
+        right: 15px; /* تقليل المسافة من الجانب */
+        font-size: 16px; /* تصغير حجم الأيقونة قليلاً */
+        padding: 8px; /* تصغير حجم الزر قليلاً */
+    }
+}
