@@ -53,4 +53,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const match = url.match(regExp);
         return (match && match[2].length === 11) ? match[2] : null;
     }
+
+    
+
+const video = document.getElementById('hero-background-video');
+const audioBtn = document.getElementById('audioControlButton');
+const audioIcon = document.getElementById('audioIcon');
+
+audioBtn.addEventListener('click', () => {
+    
+    // فحص حالة الكتم الحالية
+    if (video.muted) {
+        // إلغاء كتم الصوت
+        video.muted = false;
+        
+        // تغيير الأيقونة إلى "صوت مرتفع" (Unmuted)
+        audioIcon.classList.remove('fa-volume-mute');
+        audioIcon.classList.add('fa-volume-up');
+        
+    } else {
+        // كتم الصوت
+        video.muted = true;
+        
+        // تغيير الأيقونة إلى "مكتوم" (Muted)
+        audioIcon.classList.remove('fa-volume-up');
+        audioIcon.classList.add('fa-volume-mute');
+    }
+});
+
 });

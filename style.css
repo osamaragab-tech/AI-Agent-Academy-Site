@@ -79,6 +79,20 @@ a {
 
 
 
+.audio-control-btn {
+    position: absolute;
+    top: 20px; /* أو حسب المكان الذي يناسبك */
+    right: 20px; /* أو حسب المكان الذي يناسبك */
+    z-index: 10; /* يجب أن يكون أعلى من الفيديو */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
 .hero-content {
     position: relative;
     z-index: 1; 
