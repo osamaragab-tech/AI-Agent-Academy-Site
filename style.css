@@ -93,18 +93,19 @@ a {
     font-size: 18px;
 }
 
+#center-container{
+    text-align: center;
+    
+}
 #hero-phone-image {
-    position: absolute;
-    /* ضعها في أسفل الحاوية */
-    bottom: 0; 
-    left: 50%;
-    transform: translateX(-50%); /* للتوسيط الأفقي */
-    
+    display: block;
+    max-width: 1200px;
+    margin: 50px auto 0px auto;
+    align-items: center;
+    padding: 0 15px;
     /* تحديد عرض مناسب لها */
-    width: 60%; /* مثال، اضبط هذه القيمة ليناسب التصميم */
-    max-width: 500px; /* تحديد عرض أقصى */
+    width: 90%; /* مثال، اضبط هذه القيمة ليناسب التصميم */
     
-    z-index: -6; /* يجب أن تكون تحت المحتوى النصي وفوق الخلفية الأساسية */
 }
 
 .hero-content {
